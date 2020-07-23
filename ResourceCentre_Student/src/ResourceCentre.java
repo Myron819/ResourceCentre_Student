@@ -178,7 +178,7 @@ public class ResourceCentre {
 		camcorderList.add(cc);
 		System.out.println("Camcorder added");
 	}
-	
+	//By yiqian
 	public static Chromebook inputChromebook() {	
 		String tagch = Helper.readString("Enter asset tag > ");
 		String desch = Helper.readString("Enter description > ");
@@ -187,7 +187,8 @@ public class ResourceCentre {
 		Chromebook cb = new Chromebook(tagch, desch, osch);
 		return cb;
 		
-	}	
+	}
+	//By yiqian
 	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
 		
 		chromebookList.add(cb);
