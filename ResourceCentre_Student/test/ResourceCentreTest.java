@@ -115,38 +115,42 @@ public class ResourceCentreTest {
 	@Test
 	public void doLoanCamcorderTest() { // By Myron
 		
-		// Normal test - loan available
+		// Normal test - loan available camcorder
 		
-		ResourceCentre.addCamcorder(camcorderList, cc1);	
-		ResourceCentre.addCamcorder(camcorderList, cc2);
-		
-		Boolean isLoaned1 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0011", "0");
-		Boolean isLoaned2 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0012", "0");
-		
-		assertTrue("Test if available camcorder CC0011 can be loaned", isLoaned1);
-		assertTrue("Test if available camcorder CC0012 can be loaned", isLoaned2);
-		
-		System.out.println("Pass: Normal test - loan available");
-		
-		// Error test - loan unavailable
+				ResourceCentre.addCamcorder(camcorderList, cc1);	
+				ResourceCentre.addCamcorder(camcorderList, cc2);
+				
+				Boolean isLoaned1 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0011", "0");
+				Boolean isLoaned2 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0012", "0");
+				
+				assertTrue("Test if available camcorder CC0011 can be loaned", isLoaned1);
+				assertTrue("Test if available camcorder CC0012 can be loaned", isLoaned2);
+				assertEquals("Test if camcorder CC0011 is set to loaned", false, cc1.getIsAvailable());
+				assertEquals("Test if camcorder CC0012 is set to loaned", false, cc2.getIsAvailable());
+				
+				System.out.println("Pass: Normal test - loan available camcorder");
+				
+				// Error test - try to loan unavailable camcorder
 
-		Boolean isLoaned3 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0011", "0");
-		Boolean isLoaned4 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0012", "0");
-		
-		assertFalse("Test if unavailable camcorder CC0011 can be loaned", isLoaned3);
-		assertFalse("Test if unavailable camcorder CC0012 can be loaned", isLoaned4);
+				Boolean isLoaned3 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0011", "0");
+				Boolean isLoaned4 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0012", "0");
+				
+				assertFalse("Test if unavailable camcorder CC0011 can be loaned", isLoaned3);
+				assertFalse("Test if unavailable camcorder CC0012 can be loaned", isLoaned4);
+				assertEquals("Test if camcorder CC0011 is set to loaned", false, cc1.getIsAvailable());
+				assertEquals("Test if camcorder CC0012 is set to loaned", false, cc2.getIsAvailable());
 
-		System.out.println("Pass: Error test - loan unavailable");
-		
-		// Error test - loan non-existent
+				System.out.println("Pass: Error test - try to loan unavailable camcorder");
+				
+				// Error test - try to loan non-existent camcorder
 
-		Boolean isLoaned5 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0099", "0");
-		Boolean isLoaned6 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0100", "0");
-		
-		assertFalse("Test if available non-existent camcorder CC0099 can be loaned", isLoaned5);
-		assertFalse("Test if available non-existent camcorder CC0100 can be loaned", isLoaned6);
+				Boolean isLoaned5 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0099", "0");
+				Boolean isLoaned6 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0100", "0");
+				
+				assertFalse("Test if non-existent camcorder CC0099 can be loaned", isLoaned5);
+				assertFalse("Test if non-existent camcorder CC0100 can be loaned", isLoaned6);
 
-		System.out.println("Pass: Error test - loan non-existent");
+				System.out.println("Pass: Error test - try to loan non-existent camcorder");
 	}
 	
 	@Test
@@ -173,9 +177,47 @@ public class ResourceCentreTest {
 	}
 	
 	@Test
-	public void doReturnCamcorderTest() { // MH
+	public void doReturnCamcorderTest() { // By Myron
 
+		ResourceCentre.addCamcorder(camcorderList, cc1);	
+		ResourceCentre.addCamcorder(camcorderList, cc2);
 		
+		ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0011", "0");
+		ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0012", "0");
+
+		// Normal test - return loaned camcorder
+		
+		Boolean isLoaned1 = ResourceCentre.doReturnCamcorder(this.camcorderList, "CC0011");
+		Boolean isLoaned2 = ResourceCentre.doReturnCamcorder(this.camcorderList, "CC0012");
+		
+		assertTrue("Test if loaned camcorder CC0011 can be returned", isLoaned1);
+		assertTrue("Test if loaned camcorder CC0012 can be returned", isLoaned2);
+		assertEquals("Test if camcorder CC0011 is set to available", true, cc1.getIsAvailable());
+		assertEquals("Test if camcorder CC0012 is set to available", true, cc2.getIsAvailable());
+		
+		System.out.println("Pass: Normal test - return loaned camcorder");
+		
+		// Error test - try to return an item that is available
+
+		Boolean isLoaned3 = ResourceCentre.doReturnCamcorder(this.camcorderList, "CC0011");
+		Boolean isLoaned4 = ResourceCentre.doReturnCamcorder(this.camcorderList, "CC0012");
+		
+		assertFalse("Test if returned camcorder CC0011 can be returned again", isLoaned3);
+		assertFalse("Test if returned camcorder CC0012 can be returned again", isLoaned4);
+		assertEquals("Test if camcorder CC0011 is set to available", true, cc1.getIsAvailable());
+		assertEquals("Test if camcorder CC0012 is set to available", true, cc2.getIsAvailable());
+
+		System.out.println("Pass: Error test - try to return an item that is available");
+		
+		// Error test - try to loan non-existent camcorder
+
+		Boolean isLoaned5 = ResourceCentre.doReturnCamcorder(this.camcorderList, "CC0099");
+		Boolean isLoaned6 = ResourceCentre.doReturnCamcorder(this.camcorderList, "CC0100");
+		
+		assertFalse("Test if non-existent camcorder CC0099 can be loaned", isLoaned5);
+		assertFalse("Test if non-existent camcorder CC0100 can be loaned", isLoaned6);
+
+		System.out.println("Pass: Error test - try to loan non-existent camcorder");
 		
 		
 	}
