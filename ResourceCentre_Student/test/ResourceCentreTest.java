@@ -147,9 +147,16 @@ public class ResourceCentreTest {
 	}
 	@Test
 	public void doReturnChromebookTest() {
-		//fail("Not yet implemented");
+		//Daryl
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		ResourceCentre.addChromebook(chromebookList, cb2); 
+		ResourceCentre.doReturnChromebook(chromebookList, "CB0011");
+		assertEquals( "Test if item is available",true, chromebookList.get(1).getIsAvailable());
+		assertEquals( "Test if the item is on loan",false, chromebookList.get(1).getIsAvailable());
+
+		ResourceCentre.doReturnChromebook(chromebookList,"");
+		assertEquals( "Test if item is available","CB0011",chromebookList.get(0).getAssetTag());
 		
-		// write your code here
 	}
 	
 	@After
