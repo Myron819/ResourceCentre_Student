@@ -86,14 +86,22 @@ public class ResourceCentreTest {
 
 	@Test
 	public void doLoanCamcorderTest() { // MH
-
-		Boolean isLoaned1 = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "12");
-		Boolean isLoaned2 = ResourceCentre.doLoanCamcorder(camcorderList, "CC0012", "24");
+		
+		// Normal test
+		
+		ResourceCentre.addCamcorder(camcorderList, cc1);	
+		ResourceCentre.addCamcorder(camcorderList, cc2);
+		
+		Boolean isLoaned1 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0011", "0");
+		Boolean isLoaned2 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0012", "0");
+		
+		System.out.println(isLoaned1);
+		System.out.println(isLoaned2);
 		
 		assertTrue("Test if camcorder CC0011 can be loaned", isLoaned1);
 		assertTrue("Test if camcorder CC0012 can be loaned", isLoaned2);
 		
-		System.out.println("Loan Success");
+		System.out.println("Normal Pass");
 	}
 	
 	@Test
@@ -105,13 +113,7 @@ public class ResourceCentreTest {
 	@Test
 	public void doReturnCamcorderTest() { // MH
 
-		Boolean isLoaned1 = ResourceCentre.doReturnCamcorder(camcorderList, "CC0011");
-		Boolean isLoaned2 = ResourceCentre.doReturnCamcorder(camcorderList, "CC0012");
-		
-		assertTrue("Test if camcorder CC0011 can be loaned", isLoaned1);
-		assertTrue("Test if camcorder CC0012 can be loaned", isLoaned2);
-		
-		System.out.println("Return Success");
+
 		
 		
 	}
