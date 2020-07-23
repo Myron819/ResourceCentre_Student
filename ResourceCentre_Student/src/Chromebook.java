@@ -12,8 +12,18 @@ public class Chromebook extends Item{
 	}
 	
 	public String toString(){
+
 		String output = "";
-		// Write your codes here
+		String avail = "";
+		
+		if (this.getIsAvailable()) { 
+			avail = "Available";
+		} else {
+			avail = "Not Available";
+		}
+		
+		output = String.format("Asset Tag: %s\nDescription: %s\nDue Date: %s\nAvailability: %s", this.getAssetTag(), this.getDescription(), this.getDueDate(), avail);
+		
 		return output;
 	}
 }
