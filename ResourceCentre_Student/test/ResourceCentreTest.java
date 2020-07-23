@@ -181,7 +181,7 @@ public class ResourceCentreTest {
 	}
 	@Test
 	public void doReturnChromebookTest() {
-		//Daryl
+		// Daryl
 		ResourceCentre.addChromebook(chromebookList, cb1);
 		ResourceCentre.addChromebook(chromebookList, cb2); 
 		ResourceCentre.doReturnChromebook(chromebookList, "CB0011");
