@@ -12,6 +12,7 @@ public class Chromebook extends Item{
 	}
 	
 	public String toString(){
+
 		String output = "";
 		String avail = "";
 		
