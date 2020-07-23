@@ -85,22 +85,32 @@ public class ResourceCentreTest {
 	}
 
 	@Test
-	public void doLoanCamcorderTest() {
-		//fail("Not yet implemented");
-		// write your code here
+	public void doLoanCamcorderTest() { // MH
+
+		Boolean isLoaned1 = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "12");
+		Boolean isLoaned2 = ResourceCentre.doLoanCamcorder(camcorderList, "CC0012", "24");
+		
+		assertTrue("Test if camcorder CC0011 can be loaned", isLoaned1);
+		assertTrue("Test if camcorder CC0012 can be loaned", isLoaned2);
+		
 		
 	}
 	
 	@Test
 	public void doLoanChromebookTest() {
-		//fail("Not yet implemented");
+		//fail("Not yet implemented");	
 		// write your code here
 	}
 	
 	@Test
-	public void doReturnCamcorderTest() {
-		//fail("Not yet implemented");
-		// write your code here
+	public void doReturnCamcorderTest() { // MH
+
+		Boolean isLoaned1 = ResourceCentre.doReturnCamcorder(camcorderList, "CC0011");
+		Boolean isLoaned2 = ResourceCentre.doReturnCamcorder(camcorderList, "CC0012");
+		
+		assertTrue("Test if camcorder CC0011 can be loaned", isLoaned1);
+		assertTrue("Test if camcorder CC0012 can be loaned", isLoaned2);
+		
 		
 	}
 	@Test
