@@ -145,7 +145,7 @@ public class ResourceCentre {
 
 	public static String retrieveAllChromebook(ArrayList<Chromebook> chromebookList) {
 		String output = "";
-		// write your code here *done*
+		// write your code here *done* by Boaz
 		
 		for (int i = 0; i < chromebookList.size(); i++) {
 
@@ -153,6 +153,7 @@ public class ResourceCentre {
 					chromebookList.get(i).getDescription(), 
 					ResourceCentre.showAvailability(chromebookList.get(i).getIsAvailable()),
 					chromebookList.get(i).getDueDate(),chromebookList.get(i).getOs());
+			// 
 		}		 
 		return output;		
 	}
