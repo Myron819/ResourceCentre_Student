@@ -93,7 +93,7 @@ public class ResourceCentreTest {
 		assertTrue("Test if camcorder CC0011 can be loaned", isLoaned1);
 		assertTrue("Test if camcorder CC0012 can be loaned", isLoaned2);
 		
-		
+		System.out.println("Loan Success");
 	}
 	
 	@Test
@@ -110,6 +110,8 @@ public class ResourceCentreTest {
 		
 		assertTrue("Test if camcorder CC0011 can be loaned", isLoaned1);
 		assertTrue("Test if camcorder CC0012 can be loaned", isLoaned2);
+		
+		System.out.println("Return Success");
 		
 		
 	}
