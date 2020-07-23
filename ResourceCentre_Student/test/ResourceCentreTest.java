@@ -130,8 +130,8 @@ public class ResourceCentreTest {
 				assertEquals("Test if that Chromebook arraylist size is 0?", 1, chromebookList.size());
 				
 				//The item just loan is not same as the items of the list
-				assertNotSame("Test that Camcorder is loaned is not same as 1st item of the list?", "CB1", chromebookList.get(0));
-				assertNotSame("Test that Camcorder is loaned is not same as 1st item of the list?", "CB1", chromebookList.get(1));
+				assertNotSame("Test that Chromebook is loaned is not same as 1st item of the list?", "CB1", chromebookList.get(0));
+				assertNotSame("Test that Chromebook is loaned is not same as 1st item of the list?", "CB1", chromebookList.get(1));
 				
 				//Add loan item. test The size of the list is 2?
 				ResourceCentre.doLoanChromebook(chromebookList, "CB2", "11-11-1111");
