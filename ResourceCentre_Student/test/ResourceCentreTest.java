@@ -122,7 +122,7 @@ public class ResourceCentreTest {
 	@Test
 	public void doLoanChromebookTest() {
 		//fail("Not yet implemented");
-		// write your code here
+		// write your code here jonathan
 		// Item list is not null, so that can loan a new item
 				assertNotNull("Test if there is valid Chromebook arraylist to loan from", chromebookList);
 				
