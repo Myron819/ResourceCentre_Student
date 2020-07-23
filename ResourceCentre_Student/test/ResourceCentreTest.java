@@ -113,14 +113,46 @@ public class ResourceCentreTest {
 	}
 
 	@Test
-	public void doLoanCamcorderTest() {
-		//fail("Not yet implemented");
-		// write your code here
+	public void doLoanCamcorderTest() { // By Myron
 		
+		// Normal test - loan available
+		
+		ResourceCentre.addCamcorder(camcorderList, cc1);	
+		ResourceCentre.addCamcorder(camcorderList, cc2);
+		
+		Boolean isLoaned1 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0011", "0");
+		Boolean isLoaned2 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0012", "0");
+		
+		assertTrue("Test if available camcorder CC0011 can be loaned", isLoaned1);
+		assertTrue("Test if available camcorder CC0012 can be loaned", isLoaned2);
+		
+		System.out.println("Pass: Normal test - loan available");
+		
+		// Error test - loan unavailable
+
+		Boolean isLoaned3 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0011", "0");
+		Boolean isLoaned4 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0012", "0");
+		
+		assertFalse("Test if unavailable camcorder CC0011 can be loaned", isLoaned3);
+		assertFalse("Test if unavailable camcorder CC0012 can be loaned", isLoaned4);
+
+		System.out.println("Pass: Error test - loan unavailable");
+		
+		// Error test - loan non-existent
+
+		Boolean isLoaned5 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0099", "0");
+		Boolean isLoaned6 = ResourceCentre.doLoanCamcorder(this.camcorderList, "CC0100", "0");
+		
+		assertFalse("Test if available non-existent camcorder CC0099 can be loaned", isLoaned5);
+		assertFalse("Test if available non-existent camcorder CC0100 can be loaned", isLoaned6);
+
+		System.out.println("Pass: Error test - loan non-existent");
 	}
 	
 	@Test
 	public void doLoanChromebookTest() {
+		//fail("Not yet implemented");	
+		// write your code here
 		//fail("Not yet implemented");
 		// write your code here Jonathan
 		// Item list is not null, so that can loan a new item
@@ -137,12 +169,14 @@ public class ResourceCentreTest {
 				//loan item test The size of the list is 0?
 				ResourceCentre.doLoanChromebook(chromebookList, "CB2", "11-11-1111");
 				assertEquals("Test that chromebook arraylist size is 0?", 0, chromebookList.size());
+
 	}
 	
 	@Test
-	public void doReturnCamcorderTest() {
-		//fail("Not yet implemented");
-		// write your code here
+	public void doReturnCamcorderTest() { // MH
+
+		
+		
 		
 	}
 	@Test
